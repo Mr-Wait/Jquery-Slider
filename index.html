@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+	<title>jQuery Slider</title>
+	<link rel="stylesheet" type="text/css" href="css/DSlider.css" />
+	<!--[if lte ie 8]>
+	<link rel="stylesheet" type="text/css" href="css/ie.css" />
+	<![endif]-->
+</head>
+<body>
+	<ul class="Slider Slider1">
+		<li class="DSlider-item" data-title="11111"><img src="image/1.jpg" alt="11111"/></li>
+		<li class="DSlider-item" data-title="22222"><img src="image/2.jpg" alt="22222"/></li>
+		<li class="DSlider-item" data-title="33333"><img src="image/3.jpg" alt="33333"/></li>
+		<li class="DSlider-item" data-title="44444"><img src="image/4.jpg" alt="44444"/></li>
+		<li class="DSlider-item" data-title="55555"><img src="image/5.jpg" alt="55555"/></li>
+	</ul>
+	<ul class="Slider Slider2">
+		<li class="DSlider-item" data-title="11111"><img src="image/1.jpg" alt="11111"/></li>
+		<li class="DSlider-item" data-title="22222"><img src="image/2.jpg" alt="22222"/></li>
+		<li class="DSlider-item" data-title="33333"><img src="image/3.jpg" alt="33333"/></li>
+		<li class="DSlider-item" data-title="44444"><img src="image/4.jpg" alt="44444"/></li>
+		<li class="DSlider-item" data-title="55555"><img src="image/5.jpg" alt="55555"/></li>
+	</ul>
+	<ul class="Slider Slider3">
+		<li class="DSlider-item" data-title="11111"><img src="image/1.jpg" alt="11111"/></li>
+		<li class="DSlider-item" data-title="22222"><img src="image/2.jpg" alt="22222"/></li>
+		<li class="DSlider-item" data-title="33333"><img src="image/3.jpg" alt="33333"/></li>
+		<li class="DSlider-item" data-title="44444"><img src="image/4.jpg" alt="44444"/></li>
+		<li class="DSlider-item" data-title="55555"><img src="image/5.jpg" alt="55555"/></li>
+	</ul>
+<!-- <div class="Slider-wrap">
+	<ul id="Slider">
+		<li class="DSlider-item" data-title="11111"></li>
+		<li class="DSlider-item" data-title="22222"></li>
+		<li class="DSlider-item" data-title="33333"></li>
+		<li class="DSlider-item" data-title="44444"></li>
+		<li class="DSlider-item" data-title="55555"></li>
+	</ul>
+	<div class="showControl">
+		<a class=" prev"></a>
+		<a class="DSliderControl next"></a>
+	</div>
+		<div class="SliderTitle"></div>
+		<ul class="DSliderPage"></ul>
+</div> -->
+<script src="js/jquery.1.9.1.js"></script>
+<script src="js/jQuerySlider.js"></script>
+<script >
+	$(".Slider1").Slider({mode:'fade',isShowPage:false,isShowTitle:false});
+	$(".Slider2").Slider({ isShowControls:false,isShowPage:false,isShowTitle:false});
+	$(".Slider3").Slider({direction:'top', isShowControls:false});
+</script>
+</body>
+</html>
