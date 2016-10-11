@@ -1,7 +1,7 @@
 /*
 Designd  By  Mr.Wait . jQuerySlider 1.0
 Date:2016-9
-GitHub:
+GitHub User:Mr-Wait
 
 Thank you for download,and please get a star ,thank you !~
 For example
@@ -17,14 +17,14 @@ $("#Slider1").Slider({mode:'fade',isShowPage:false,isShowTitle:false});
 
 
 (function($){
-	$.fn.Slider = function(options){
+      $.fn.Slider = function(options){
             options = $.extend({
             //开始索引 0开始
             startSlide: 0,
             //子元素选择器
             item: '.DSlider-item',
             //是否自适应
-            isFlexible: true,
+            isFlexible: false,
             //是否显示分页按钮
             isShowPage: true,
             //是否显示标题栏
@@ -60,7 +60,7 @@ $("#Slider1").Slider({mode:'fade',isShowPage:false,isShowTitle:false});
                         // 自动播放
                         options.isAuto && methods.autoPlay();
                         // 弹性布局
-                        options.isFlexible && $(window).on('resize', $.proxy(this, 'resize'));
+                        options.isFlexible && $(window).on('resize',$.proxy(methods['resize'],this));
                   },
                   setLayout:function(){
                         this.$itemWrap.wrap("<div class='DSlider-wrap' />");
@@ -154,7 +154,9 @@ $("#Slider1").Slider({mode:'fade',isShowPage:false,isShowTitle:false});
                   // 设置动画元素对应css
                   setCss:function(){
                         if(options.mode!="move" && options.mode!="fade") return;
-                        var css ={};
+                        if(!options.isFlexible){
+                              this.wrap.width(this.$item.find("img").width());
+                        }
                         if(options.mode=="move"){
                               if(options.direction=="left"){
                                     this.$itemWrap.css({"width":this.size*100 + "%","position":"relative"});
@@ -165,9 +167,10 @@ $("#Slider1").Slider({mode:'fade',isShowPage:false,isShowTitle:false});
                                     this.$item.css({"clear":"left"});
                               }
                         }else{
-                              this.$itemWrap.css("width",this.wrap.width());
+                              this.$itemWrap.css("width","100%");
                               this.$item.css("position","absolute");
                         }
+
                   },
                   // 滑动效果
                   fade:function(target){
@@ -183,21 +186,25 @@ $("#Slider1").Slider({mode:'fade',isShowPage:false,isShowTitle:false});
                   // 自适应
                   resize:function(){
                         var self = this;
-                        self.$item.each(function(){
-                             $(this).width(self.wrap.width());
+                        var wrapWidth = self.wrap.width();
+                      
+                       
+                                   
+                        self.$item.each(function(){                          
+                             $(this).width(wrapWidth);
                         });
                   },
                   autoPlay:function(){
-                        if(!options.isAuto ||!options.mode)return;
+                        if(!options.isAuto)return;
                         var self =this;
                         clearInterval(this.playTimer);
                         this.playTimer =setInterval(function(){methods[options.mode](self.$item.eq(self.curIndex+1))},options.intervalTime);
                   }
 
             }
-		 return this.each(function(){
-		 	methods.init($(this));
+             return this.each(function(){
+                  methods.init($(this));
 
-		 });
-	}
+             });
+      }
 })(window.jQuery);
